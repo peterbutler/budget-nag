@@ -17,21 +17,34 @@ class App extends Component {
     };
   }
   componentDidMount(){
-    const hrefMatches = window.location.href.match( /#access_token=([^&]*)/ );
+    // Get the access token
     let accessToken = false;
+    const hrefMatches = window.location.href.match( /#access_token=([^&]*)/ );
     if ( hrefMatches ) {
       accessToken = hrefMatches[1];
+      localStorage.setItem("accessToken", accessToken);
+      window.location.replace( process.env.REACT_APP_DOMAIN );
     }
+    accessToken = localStorage.getItem("accessToken");
     if ( accessToken ) {
       this.setState( {
         accessToken: accessToken,
         budgetID: '',
       })
     }
+
+    // Check if we already have a budget to use:
+    const budgetID = localStorage.getItem( 'budgetID' );
+    if ( budgetID ) {
+      this.setState({
+        budgetID: budgetID
+      });
+    }
   }
 
 
   chooseBudget(chosenBudget) {
+    localStorage.setItem( 'budgetID', chosenBudget );
     this.setState(
       {
         budgetID: chosenBudget
