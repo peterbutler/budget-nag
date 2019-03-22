@@ -61,7 +61,7 @@ class App extends Component {
     if ( ! accessToken ) {
       return (
         <div>
-          <a href="https://app.youneedabudget.com/oauth/authorize?client_id=70358bfd41a2fadf29be9211bbf672b434ff7ae49dd3d6bf8b011afbe35f4e5a&redirect_uri=http://budget-nag.herokuapp.com&response_type=token">
+          <a href="https://app.youneedabudget.com/oauth/authorize?client_id=70358bfd41a2fadf29be9211bbf672b434ff7ae49dd3d6bf8b011afbe35f4e5a&redirect_uri=https://budget-nag.herokuapp.com&response_type=token">
           Click here to log in.
           </a>
         </div>
